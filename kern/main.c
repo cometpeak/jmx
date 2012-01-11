@@ -16,25 +16,10 @@ int kmain(void* mbd, unsigned int magic)
 	/* or do your offsets yourself. The following is merely an example. */ 
 
 	char *boot_loader_name = (char*) ((long*) mbd)[16];
-	boot_loader_name = 0;
-
-	unsigned char *videoram = (unsigned char *) 0xb8000;
 
 	monitor_clear();
-
-	videoram[0] = 65; /* character 'A' */
-	videoram[1] = 0x07; /* light grey (7) on black (0). */
-
-	monitor_clear();
-
-	//monitor_write("hello");
-	monitor_put('H');
-
-	//char str[] = "hello";
-	//monitor_put('e');
-	//monitor_write(str);
-
-	monitor_write("hello");
+	monitor_write("Hello from kernel land\n");
+	monitor_write(boot_loader_name);
 
 	return 0;
 }
